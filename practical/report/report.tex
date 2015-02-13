@@ -1,0 +1,41 @@
+\documentclass[a4paper, fontsize=11pt]{report} % A4 paper and 11pt font size
+\input{_setup.tex}
+
+%----------------------------------------------------------------------------------------
+%   TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{ 
+\normalfont \normalsize 
+\textsc{Norwegian University of Science and Technology} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge \textbf{TTM4135 Practical} \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Christoffer Tønnessen}
+
+\date{\normalsize February 13, 2015}
+
+\begin{document}
+
+\pagenumbering{roman}
+
+\maketitle
+
+\newpage
+
+\thispagestyle{firststyle}
+
+\newpage
+
+\pagenumbering{arabic}
+
+% Questions
+\subfile{questions/questions.tex}
+
+\printbibliography
+
+\end{document}
