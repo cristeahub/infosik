@@ -3,9 +3,13 @@
 The ciphertext that comes from AES is a modern algorithm and works on bytes.
 Older algorithms works on words and letters and changes these in some way.
 In my case I can clearly see that `0.txt` has random characters in it, while the rest has letters.
+None of the other texts look very much like plain English, but some do have some characteristic similarities.
 Therefore `0.txt` comes from AES and will be put aside until later.
 
 \subsection*{1.txt}
+
+This text has some quotation marks as well as a question mark.
+Also the words look like they have lengths like english words.
 
 The frequency of letters in the histogram in Figure \ref{fig:1freq} of this text shows a distribution which closely corresponds to the distribution of letters in the english language\cite{frequencies} if variance is taken into account.
 However the most popular letters doesn't match up with the english ones.
@@ -43,6 +47,8 @@ Therefore I believe that this ciphertext has been made with a random simple subs
 \newpage
 \subsection*{2.txt}
 
+This text is one long sentence and the words doesn't really look like the lengths of english words.
+
 One can see from the histogram in 2.txt (Figure \ref{fig:2freq}) that the distribution of letters closely resembles the distribution in the english language with corresponding letters.
 
 In a transposition the letters themselves doesn't change, but rather the technique for reading said letters change.
@@ -78,6 +84,8 @@ This all together makes me believe that this ciphertext has been made with trans
 \newpage
 \subsection*{3.txt}
 
+This text has some quotation marks and some words with lengths that might be english.
+
 The distribution of the histogram for 3.txt in Figure \ref{fig:3freq} has a different distribution than previously seen.
 This distribution is much flatter where all the letters are closer to the mean value.
 One can therefore rule out transposition and simple substitution.
@@ -111,6 +119,8 @@ Based on these facts I therefore believe this ciphertext is made by 2 x 2 Hill c
 
 \newpage
 \subsection*{4.txt}
+
+This text doesn't really look like english at all.
 
 The distribution for this text is shown in Figure \ref{fig:4freq}.
 The initial thoguht here was that this could not be a polyalphabetic cipher because of too many letters away from the mean.
@@ -255,7 +265,7 @@ $$ 291.61 \text{ sec } \cdot 2^{100} = 1.172 \cdot 10^{25} \text{ years} $$
 
 \section*{2.4 Avalanche effects in AES}
 
-\subsection*{SubBytes and ShitRows}
+\subsection*{SubBytes and ShiftRows}
 
 The SubBytes step of AES replaces each byte with another byte based on a lookup table called the Rijndael S-box.
 Different from DES this box is the same for all bytes.
@@ -292,4 +302,16 @@ This is the reason only these cells change, but it is also a good example of one
 
 \subsection*{Bottom right byte}
 
+If the bottom right byte is changed the key will change.
+In the first round row 2 (indexed from 0) and the bottom right byte will change.
+The last key will fully change if this byte is changed in the key.
+If however the 3rd column is changed instead of the 4th, a lot less change will occure in the key.
 
+This is because the next key generator is based on having each 4th column rotated (RotWord) as well as SubByted.
+After this it is XORed with the column before as well as a constant.
+All other rows are XORed with the row 4 places back.
+
+This makes an entropy that gradually increases with each round.
+
+The avalanche effect is that a small change in input gives a large change in output.
+Each part of AES does this directly or indirectly.
