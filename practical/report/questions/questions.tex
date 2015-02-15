@@ -1,3 +1,235 @@
 \section*{2.1 Identify the ciphertexts}
 
-Something something
+The ciphertext that comes from AES is a modern algorithm and works on bytes.
+Older algorithms works on words and letters and changes these in some way.
+In my case I can clearly see that `0.txt` has random characters in it, while the rest has letters.
+Therefore `0.txt` comes from AES and will be put aside until later.
+
+\subsection*{1.txt}
+
+The frequency of letters in the histogram in Figure \ref{fig:1freq} of this text shows a distribution which closely corresponds to the distribution of letters in the english language\cite{frequencies} if variance is taken into account.
+However the most popular letters doesn't match up with the english ones.
+
+In a random simple substitution each letter in an alphabet is mapped to a random other letter in another alphabet.
+For instance all As can be switched with Zs and all Cs with Qs and so forth.
+Because of this the distribution of letters should stay the same, but there should be random what letters have which percentage of the total amount of letters.
+This corresponds nicely with this histogram.
+
+The diagram of this text shown in Figure \ref{fig:1diagram} differes from the usual frequencies in the english language shown \cite{diagraphs}.
+However this does not neccesarily mean that there is no correlation here, the variance in such a small text is huge.
+The difference between each of the diagraphs is still much the same.
+
+The autocorrelation did not show any significant periods or similar in this case, and I chose not to include it.
+This is not only because the graph seemed to have random matches all over the place, but also because the other two analysis have given me enough evidence to be certan of what is going on.
+
+Therefore I believe that this ciphertext has been made with a random simple substitution, and some easy testing with the tools verify this.
+
+\begin{figure}[ht!]
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{assets/1_frequency.png}
+        \caption{Frequency for text 1}
+        \label{fig:1freq}
+    \end{center}
+\end{figure}
+
+\begin{figure}[ht!]
+    \begin{center}
+        \includegraphics[height=0.8\textwidth]{assets/1_diagram.png}
+        \caption{Diagram for text 1}
+        \label{fig:1diagram}
+    \end{center}
+\end{figure}
+
+\newpage
+\subsection*{2.txt}
+
+One can see from the histogram in 2.txt (Figure \ref{fig:2freq}) that the distribution of letters closely resembles the distribution in the english language with corresponding letters.
+
+In a transposition the letters themselves doesn't change, but rather the technique for reading said letters change.
+The idea here is to give a permutation of the plaintext and thereby obscure the contents.
+
+Since this doesn't change the distribution of the letters at all, it will still correspond to the common distribution of letters in the language it's written in.
+
+The diagram for this text shown in Figure \ref{fig:2diagram} has not the most common diagraphs in the english language\cite{diagraphs}.
+If this indeed is a transposition then the diagraphs should not match up.
+The frequency chart is the one that really makes a difference here.
+
+As with the previous text I choose here not to include the autocorrelation graph.
+Just as the last one it seemed to be random all over the place.
+
+This all together makes me believe that this ciphertext has been made with transposition.
+
+\begin{figure}[ht!]
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{assets/2_frequency.png}
+        \caption{Frequency for text 2}
+        \label{fig:2freq}
+    \end{center}
+\end{figure}
+
+\begin{figure}[ht!]
+    \begin{center}
+        \includegraphics[height=0.7\textwidth]{assets/2_diagram.png}
+        \caption{Diagram for text 2}
+        \label{fig:2diagram}
+    \end{center}
+\end{figure}
+
+\newpage
+\subsection*{3.txt}
+
+The distribution of the histogram for 3.txt in Figure \ref{fig:3freq} has a different distribution than previously seen.
+This distribution is much flatter where all the letters are closer to the mean value.
+One can therefore rule out transposition and simple substitution.
+
+Polyalphabetic substituion aims to smooth the frequency distribution so that frequency analysis is no longer effective.
+Vigenère cipher is one form of polyalphabetic substitution.
+My initial thought was therefore that this should be the Vigenêre cipher.
+However if we examine the autocorrelation seen in Figure \ref{fig:3autocorr} of this cipher we see no significant spikes in the graph.
+This means that the text is not Vigenère.
+
+The diagraph frequencies here is not that interesting based on the other facts we have gathered.
+We can observe that they seem to have a somewhat correlation to what we might expect.
+
+Based on these facts I therefore believe this ciphertext is made by 2 x 2 Hill cipher.
+
+\begin{figure}[ht!]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{assets/3_frequency.png}
+        \caption{Frequency for text 3}
+        \label{fig:3freq}
+    \end{center}
+\end{figure}
+
+\begin{figure}[ht!]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{assets/3_autocorr.png}
+        \caption{Autocorrelation for text 3}
+        \label{fig:3autocorr}
+    \end{center}
+\end{figure}
+
+\newpage
+\subsection*{4.txt}
+
+The distribution for this text is shown in Figure \ref{fig:4freq}.
+The initial thoguht here was that this could not be a polyalphabetic cipher because of too many letters away from the mean.
+However this is, as all the other texts, a very short text, so the variance explodes.
+The autocorrelation is what really stands out when this text is looked at.
+
+Looking at Figure \ref{fig:4autocorr} we can clearly see a period here.
+The pattern seem to repeat itself very periodically.
+If we try to use the analysis tool in CrypTool to find Periodicity we find nothing, however.
+This might be because of this tool being used wrongly by yours truly.
+
+With all the information gathered the diagram aren't that interesting.
+
+The autocorrelation itself is enough to think this is a Vigrène cipher, and some easy testing verifies this.
+
+\begin{figure}[ht!]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{assets/4_frequency.png}
+        \caption{Frequency for text 4}
+        \label{fig:4freq}
+    \end{center}
+\end{figure}
+
+\begin{figure}[ht!]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{assets/4_autocorr.png}
+        \caption{Autocorrelation for text 4}
+        \label{fig:4autocorr}
+    \end{center}
+\end{figure}
+
+\section*{2.2 Obtaining the plaintexts}
+
+For the random simple substitution I used the recognition based on the most used frequent words of a language.
+I believed this to be the most effective one because of the shortness of the text, since diagraphs and so on can very based on a short text.
+I used e as the most frequent character, since I had seen a character in the frequency be a lot more common than the rest.
+The initial result was very good, and I looked for words I knew based on the surrounding words for the final letters.
+This text is from Sherlock Holmes.
+
+The finished text is: \\
+HAD HE EVER SPOKEN OF SWANDAM LANE HAD HE EVER SHOWED ANY SIGNS OF HAVING TAKEN OPIUM THANK YOU MRS ST CLAIR THOSE ARE THE PRINCIPAL POINTS ABOUT WHICH I WISHED TO BE ABSOLUTELY CLEAR WE SHALL NOW HAVE A LITTLE SUPPER AND THEN RETIRE FOR WE MAY HAVE A VERY BUSY DAY A LARGE AND COMFORTABLE DOUBLEBEDDED ROOM HAD BEEN PLACED AT OUR DISPOSAL AND I WAS QUICKLY BETWEEN THE SHEETS FOR I WAS WEARY AFTER MY NIGHT OF ADVENTURE SHERLOCK HOLMES WAS A MAN HOWEVER WHO WHEN HE HAD AN UNSOLVED PROBLEM UPON HIS MIND WOULD GO FOR DAYS AND EVEN FOR A WEEK WITHOUT REST TURNING IT OVER REARRANGING HIS FACTS LOOKING AT IT FROM EVERY POINT OF VIEW UNTIL HE HAD EITHER FATHOMED IT OR CONVINCED HIMSELF THAT HIS DATA WERE INSUFFICIENT IT WAS SOON EVIDENT TO ME THAT HE WAS NOW PREPARING FOR AN ALLNIGHT SITTING HE TOOK OFF HIS COAT AND WAISTCOAT PUT ON A LARGE BLUE DRESSINGGOWN AND THEN WANDERED ABOUT THE ROOM COLLECTING PILLOWS FROM HIS BED AND CUSHIONS FROM THE SOFA AND ARMCHAIRS WITH THESE HE CONSTRUCTED A SORT OF EASTERN DIVAN UPON WHICH HE PERCHED HIMSELF CROSSLEGGED WITH 
+
+
+The Vigenère cipher was cracked using the analysis part that only said Vigenère and nothing else.
+Cryptool found that the keylength was 7 and cracked the text.
+This in spite of not finding any period beforehand.
+For your reading pleasure the text has been all capitalized, but the original text that came out from the deciphering was what felt like randomized capitalization.
+
+The text is: \\
+THERE IN TWENTY MINUTES."
+IT WAS NEARLY FOUR O'CLOCK WHEN WE AT LAST, AFTER PASSING THROUGH
+THE BEAUTIFUL STROUD VALLEY, AND OVER THE BROAD GLEAMING SEVERN,
+FOUND OURSELVES AT THE PRETTY LITTLE COUNTRY-TOWN OF ROSS. A
+LEAN, FERRET-LIKE MAN, FURTIVE AND SLY-LOOKING, WAS WAITING FOR
+US UPON THE PLATFORM. IN SPITE OF THE LIGHT BROWN DUSTCOAT AND
+LEATHER-LEGGINGS WHICH HE WORE IN DEFERENCE TO HIS RUSTIC
+SURROUNDINGS, I HAD NO DIFFICULTY IN RECOGNISING LESTRADE, OF
+SCOTLAND YARD. WITH HIM WE DROVE TO THE HEREFORD ARMS WHERE A
+ROOM HAD ALREADY BEEN ENGAGED FOR US.
+"I HAVE ORDERED A CARRIAGE," SAID LESTRADE AS WE SAT OVER A CUP
+OF TEA. "I KNEW YOUR ENERGETIC NATURE, AND THAT YOU WOULD NOT BE
+HAPPY UNTIL YOU HAD BEEN ON THE SCENE OF THE CRIME."
+"IT WAS VERY NICE AND COMPLIMENTARY OF YOU," HOLMES ANSWERED. "IT
+IS ENTIRELY A QUESTION OF BAROMETRIC PRESSURE."
+LESTRADE LOOKED STARTLED. "I DO NOT QUITE FOLLOW," HE SAID.
+"HOW IS THE GLASS? TWENTY-NINE, I SEE. NO WIND, AND NOT A CLOUD
+IN THE SKY. I HAVE A CASEFUL OF CIGARETTES HERE WHICH NEED
+SMOKING, AND THE SOFA IS VERY MUCH SUPERIOR TO THE USUAL COUNTRY
+HOTEL ABOMINATION. I DO NOT THINK THAT IT IS PROBABLE THAT I
+SHALL USE THE CARRIAGE TO-NIGHT."
+
+\section*{2.3 Brute force attack}
+
+\subsection*{1. Perform brute force attack}
+
+The brute force attack was carried out using CrypTool.
+It was conducted on a MacBook Pro Retina late 2013 model with Windows 7 running in a VM using Parallels 9.
+
+The successful run took 4 minutes and 51 seconds and 61 hundreds to run.
+The key found was 7EEC908000... and the plaintext (like before capitalized to stand out): \\
+THE ARNSWORTH CASTLE BUSINESS. A MARRIED WOMAN GRABS AT HER BABY;
+AN UNMARRIED ONE REACHES FOR HER JEWEL-BOX. NOW IT WAS CLEAR TO
+ME THAT OUR LADY OF TO-DAY HAD NOTHING IN THE HOUSE MORE PRECIOUS
+TO HER THAN WHAT WE ARE IN QUEST OF. SHE WOULD RUSH TO SECURE IT.
+THE ALARM OF FIRE WAS ADMIRABLY DONE. THE SMOKE AND SHOUTING WERE
+ENOUGH TO SHAKE NERVES OF STEEL. SHE RESPONDED BEAUTIFULLY. THE
+PHOTOGRAPH IS IN A RECESS BEHIND A SLIDING PANEL JUST ABOVE THE
+RIGHT BELL-PULL. SHE WAS THERE IN AN INSTANT, AND I CAUGHT A
+GLIMPSE OF IT AS SHE HALF-DREW IT OUT. WHEN I CRIED OUT THAT IT
+WAS A FALSE ALARM, SHE REPLACED IT, GLANCED AT THE ROCKET, RUSHED
+FROM THE ROOM, AND I HAVE NOT SEEN HER SINCE. I ROSE, AND, MAKING
+MY EXCUSES, ESCAPED FROM THE HOUSE. I HESITATED WHETHER TO
+ATTEMPT TO SECURE THE PHOTOGRAPH AT ONCE; BUT THE COACHMAN HAD
+COME IN, AND AS HE WAS WATCHING ME NARROWLY IT SEEMED SAFER TO
+WAIT. A LITTLE OVER-PRECIPITANCE MAY RUIN ALL."
+"AND NOW?" I ASKED.
+"OUR QUEST IS PRACTICALLY FINISHED. I SHALL CALL WITH THE KING
+TO-MORROW, AND WITH YOU, IF YOU CARE TO COME WITH US. WE WILL BE
+SHOWN INTO THE SITTING-ROOM TO WAIT FOR THE LADY, BUT IT IS
+PROBABLE THAT WHEN SHE COMES SHE MAY FIND NEITHER US NOR THE
+PHOTOGRAPH. IT MIGHT BE A SATISFACTION TO HIS MAJESTY TO REGAIN
+
+\subsection*{2. Estimations}
+
+The amount of possible keys to check with an effective key of 28 bits is $2^{28} = 268 435 456$.
+When the key is reduced to 24 bits, which is a 4 bit reduction, the possible outcomes is reduced by a factor of $2^{4} = 16$.
+With only $2^{28-4} = 2^{24} = 16 777 216$ possible keys the search the time it takes to brute-force search should also be reduced by a factor of 16.
+The total time it took to calculate the 28 bit key is 291.61 seconds.
+My estimate is therefore:
+$$ \frac{291.61 \text{ sec}}{16} = 18.22 \text{ sec} $$
+The total amount of time to search for a 24 bit key should take 18.22 seconds.
+
+The actual time taken to find a 24 bit key was 18 seconds and 97 hundreds, which is not so far off from our estimate.
+The error in my estimate is $4 \%$ off, which is about as good as an estimate gets.
+Every run of the brute-force search will have some variance.
+Personally I think the estimate is very good.
+
+To estimate the time it will take to find a 128 bit key we calculate the same way as before.
+The possible outcomes is now $2^{100}$ times bigger than before.
+So we increase the time it took to find a 28 bit key by $2^{100}$ and we have our estimate.
+
+$$ 291.61 \text{ sec } \cdot 2^{100} = 1.172 \cdot 10^{25} \text{ years} $$
