@@ -82,7 +82,7 @@ The distribution of the histogram for 3.txt in Figure \ref{fig:3freq} has a diff
 This distribution is much flatter where all the letters are closer to the mean value.
 One can therefore rule out transposition and simple substitution.
 
-Polyalphabetic substituion aims to smooth the frequency distribution so that frequency analysis is no longer effective.
+This flattening of the distribution can point to polyalphabetic substitution or some other way of flatten the distribution.
 Vigenère cipher is one form of polyalphabetic substitution.
 My initial thought was therefore that this should be the Vigenêre cipher.
 However if we examine the autocorrelation seen in Figure \ref{fig:3autocorr} of this cipher we see no significant spikes in the graph.
@@ -150,37 +150,56 @@ I used e as the most frequent character, since I had seen a character in the fre
 The initial result was very good, and I looked for words I knew based on the surrounding words for the final letters.
 This text is from Sherlock Holmes.
 
+The key is OYHMPBVAC*EFGIJKLNQRSTU*X*.
 The finished text is: \\
-HAD HE EVER SPOKEN OF SWANDAM LANE HAD HE EVER SHOWED ANY SIGNS OF HAVING TAKEN OPIUM THANK YOU MRS ST CLAIR THOSE ARE THE PRINCIPAL POINTS ABOUT WHICH I WISHED TO BE ABSOLUTELY CLEAR WE SHALL NOW HAVE A LITTLE SUPPER AND THEN RETIRE FOR WE MAY HAVE A VERY BUSY DAY A LARGE AND COMFORTABLE DOUBLEBEDDED ROOM HAD BEEN PLACED AT OUR DISPOSAL AND I WAS QUICKLY BETWEEN THE SHEETS FOR I WAS WEARY AFTER MY NIGHT OF ADVENTURE SHERLOCK HOLMES WAS A MAN HOWEVER WHO WHEN HE HAD AN UNSOLVED PROBLEM UPON HIS MIND WOULD GO FOR DAYS AND EVEN FOR A WEEK WITHOUT REST TURNING IT OVER REARRANGING HIS FACTS LOOKING AT IT FROM EVERY POINT OF VIEW UNTIL HE HAD EITHER FATHOMED IT OR CONVINCED HIMSELF THAT HIS DATA WERE INSUFFICIENT IT WAS SOON EVIDENT TO ME THAT HE WAS NOW PREPARING FOR AN ALLNIGHT SITTING HE TOOK OFF HIS COAT AND WAISTCOAT PUT ON A LARGE BLUE DRESSINGGOWN AND THEN WANDERED ABOUT THE ROOM COLLECTING PILLOWS FROM HIS BED AND CUSHIONS FROM THE SOFA AND ARMCHAIRS WITH THESE HE CONSTRUCTED A SORT OF EASTERN DIVAN UPON WHICH HE PERCHED HIMSELF CROSSLEGGED WITH 
+"Had he ever spoken of Swandam Lane?"
+"Had he ever showed any signs of having taken opium?"
+"Thank you, Mrs. St. Clair. Those are the principal points about
+which I wished to be absolutely clear. We shall now have a little
+supper and then retire, for we may have a very busy day 
+A large and comfortable double-bedded room had been placed at our
+disposal, and I was quickly between the sheets, for I was weary
+after my night of adventure. Sherlock Holmes was a man, however,
+who, when he had an unsolved problem upon his mind, would go for
+days, and even for a week, without rest, turning it over,
+rearranging his facts, looking at it from every point of view
+until he had either fathomed it or convinced himself that his
+data were insufficient. It was soon evident to me that he was now
+preparing for an all-night sitting. He took off his coat and
+waistcoat, put on a large blue dressing-gown, and then wandered
+about the room collecting pillows from his bed and cushions from
+the sofa and armchairs. With these he constructed a sort of
+Eastern divan, upon which he perched himself cross-legged, with
+
 
 
 The Vigenère cipher was cracked using the analysis part that only said Vigenère and nothing else.
 Cryptool found that the keylength was 7 and cracked the text.
+The key is BLSRMHY.
 This in spite of not finding any period beforehand.
-For your reading pleasure the text has been all capitalized, but the original text that came out from the deciphering was what felt like randomized capitalization.
 
 The text is: \\
-THERE IN TWENTY MINUTES."
-IT WAS NEARLY FOUR O'CLOCK WHEN WE AT LAST, AFTER PASSING THROUGH
-THE BEAUTIFUL STROUD VALLEY, AND OVER THE BROAD GLEAMING SEVERN,
-FOUND OURSELVES AT THE PRETTY LITTLE COUNTRY-TOWN OF ROSS. A
-LEAN, FERRET-LIKE MAN, FURTIVE AND SLY-LOOKING, WAS WAITING FOR
-US UPON THE PLATFORM. IN SPITE OF THE LIGHT BROWN DUSTCOAT AND
-LEATHER-LEGGINGS WHICH HE WORE IN DEFERENCE TO HIS RUSTIC
-SURROUNDINGS, I HAD NO DIFFICULTY IN RECOGNISING LESTRADE, OF
-SCOTLAND YARD. WITH HIM WE DROVE TO THE HEREFORD ARMS WHERE A
-ROOM HAD ALREADY BEEN ENGAGED FOR US.
-"I HAVE ORDERED A CARRIAGE," SAID LESTRADE AS WE SAT OVER A CUP
-OF TEA. "I KNEW YOUR ENERGETIC NATURE, AND THAT YOU WOULD NOT BE
-HAPPY UNTIL YOU HAD BEEN ON THE SCENE OF THE CRIME."
-"IT WAS VERY NICE AND COMPLIMENTARY OF YOU," HOLMES ANSWERED. "IT
-IS ENTIRELY A QUESTION OF BAROMETRIC PRESSURE."
-LESTRADE LOOKED STARTLED. "I DO NOT QUITE FOLLOW," HE SAID.
-"HOW IS THE GLASS? TWENTY-NINE, I SEE. NO WIND, AND NOT A CLOUD
-IN THE SKY. I HAVE A CASEFUL OF CIGARETTES HERE WHICH NEED
-SMOKING, AND THE SOFA IS VERY MUCH SUPERIOR TO THE USUAL COUNTRY
-HOTEL ABOMINATION. I DO NOT THINK THAT IT IS PROBABLE THAT I
-SHALL USE THE CARRIAGE TO-NIGHT."
+theRe iN tWeNTY MinUTes."
+it WaS nearlY fOUR o'cLOck WheN We aT laST, afTeR PaSsIng ThRoUgh
+The bEaUTifUL STROUd valLeY, aNd oVeR THe bROad GleaMinG SeVeRn,
+FoUNd OURseLVes at The PrEtTY LiTTle cOUnTrY-TOWn Of rOSS. A
+LeaN, ferReT-Like Man, fURTIve aNd sLy-lOOkiNg, WaS WaItiNg foR
+uS UPOn The PLaTFoRM. In sPiTe Of THe lIghT broWN dUStcOaT aNd
+leaThEr-leggiNgS WhicH he WORe In deferEnce TO hIs RUSTiC
+sURROUNdiNgS, I Had NO diFficUlTY in RecoGniSing leSTRadE, of
+scOTLand yarD. WiTh hiM we dROVE to The HErefORd ArmS WheRe a
+ROOm Had aLReadY been Engaged FoR US.
+"I have ORdeRed a carRiage," SaId LeSTrade aS We SaT OVer a cUP
+Of TEa. "I KNeW YoUR eneRgeTic natURe, anD thaT YoU woULd nOt be
+hapPy UNTil YoU had bEen ON ThE sceNe oF the cRiMe."
+"IT Was VeRY NicE and cOmPliMenTarY Of YoU," HoLMes anSWeReD. "IT
+IS enTiReLY a QueSTioN of baRoMeTRic pReSSURe."
+leSTRadE loOKed StaRTleD. "I dO NOT QuiTe foLloW," he said.
+"HOW iS the glaSs? tWenTY-niNe, I sEe. NO WinD, and NOT a clOUd
+iN the SkY. i haVe a casefUl oF cigaReTteS herE whIch nEed
+SMOkIng, aNd THe SOfa iS veRY mUCh SUPerIoR TO ThE uSUal cOunTRY
+hOteL aboMinaTioN. I dO NOT ThiNK That iT iS pRobable ThaT I
+Shall USe THe caRRiage TO-niGhT."
 
 \section*{2.3 Brute force attack}
 
@@ -190,7 +209,7 @@ The brute force attack was carried out using CrypTool.
 It was conducted on a MacBook Pro Retina late 2013 model with Windows 7 running in a VM using Parallels 9.
 
 The successful run took 4 minutes and 51 seconds and 61 hundreds to run.
-The key found was 7EEC908000... and the plaintext (like before capitalized to stand out): \\
+The key found was 7EEC908000...(etc with 0s) and the plaintext (like before capitalized to stand out): \\
 THE ARNSWORTH CASTLE BUSINESS. A MARRIED WOMAN GRABS AT HER BABY;
 AN UNMARRIED ONE REACHES FOR HER JEWEL-BOX. NOW IT WAS CLEAR TO
 ME THAT OUR LADY OF TO-DAY HAD NOTHING IN THE HOUSE MORE PRECIOUS
@@ -233,3 +252,44 @@ The possible outcomes is now $2^{100}$ times bigger than before.
 So we increase the time it took to find a 28 bit key by $2^{100}$ and we have our estimate.
 
 $$ 291.61 \text{ sec } \cdot 2^{100} = 1.172 \cdot 10^{25} \text{ years} $$
+
+\section*{2.4 Avalanche effects in AES}
+
+\subsection*{SubBytes and ShitRows}
+
+The SubBytes step of AES replaces each byte with another byte based on a lookup table called the Rijndael S-box.
+Different from DES this box is the same for all bytes.
+The mathematics behind the substitution is a two step process.
+The first step is to transform each bit into a polynomial vector, where a $1$ in the $n\text{-th}$ position would become an $x^{n}$.
+With this polynomial you are to compute the inverse of this matrix with the respect to 1 modulo some irreductible polynomial, which one can draw parallels to a prime number, but for a field.
+After you aquire the inverse, you are to do an affine transformation to get your final result.
+This 1 to 1 mapping is constant for each possible input.
+
+The ShiftRows section of the shufles the bytes to different locations.
+If you visualize a 4 by 4 matrix, each row is shiften $n$ times to the left with wrapping if the top row is index 0.
+This makes it so that a change in one 4 byte block will have an effect on the rest of the blocks for the next step.
+
+After the first two steps of the first round a lot of the blocks is 63.
+This is because the first step is a 1 to 1 mapping, which is constant for each input and then they are shifted.
+Until this stage no change has happened which can make a same character byte map to multiple outputs.
+The reason for not all cells to be 63 is that the initial step is to XOR the input with the key before round 1.
+
+\subsection*{Second round}
+
+After SubBytes and ShiftRows in the round 2, all but [(0,0), (1,3), (2,2), (3,1)] remain unchanged.
+This is unaffected by the input from the first input byte and has been verified by empiric testing.
+
+The reason for this is that we have run MixColumns one time.
+MixColumns use a predefined matrix to give its output.
+This matrix says how much each input will change the output.
+Therefore one bit change in one input to MixColumns will change every output from that collection of 4 bytes.
+
+In our example that means that the elements of the first column will change before round two.
+In round two, as we know, we will get a 1 to 1 mapping first and a shift.
+The shift makes the first column go into the exact same places as we noticed change.
+
+This is the reason only these cells change, but it is also a good example of one small input change leads to a big output change (16 bit change in output from <4 input change in input).
+
+\subsection*{Bottom right byte}
+
+
